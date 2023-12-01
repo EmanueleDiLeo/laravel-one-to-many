@@ -1,0 +1,44 @@
+@import '~bootstrap/scss/bootstrap';
+
+
+header{
+    height: 60px;
+    padding: 0 20px;
+}
+
+.main-wrapper{
+    height: calc(100vh - 60px);
+    .form-hidden{
+        border: none;
+        width: 100%;
+        &:focus{
+            outline: none;
+            border: none;
+        }
+    }
+}
+
+aside{
+    width: 250px;
+    height: 100%;
+    ul{
+        list-style: none;
+        // padding-left: 0;
+        li{
+            padding: 10px 0;
+            a{
+                color: white;
+                text-decoration: none;
+                &:hover{
+                    border-bottom: 1px solid white;
+                    // display: inline-block;
+                    // width: 100%;
+                }
+                &.active{
+                    border-bottom: 3px solid white;
+                    font-size: 1.1rem;
+                }
+            }
+        }
+    }
+}
