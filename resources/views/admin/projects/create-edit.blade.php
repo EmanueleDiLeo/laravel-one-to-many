@@ -51,6 +51,21 @@
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
+
+                <div class="mb-3">
+                    <label for="type_id" class="form-label">Tipo</label>
+                    <select class="form-select" name="type_id" id="type_id">
+                        <option value="">Seleziona un tipo</option>
+
+                        @foreach ($types as $type)
+                        <option
+                        value="{{$type->id}}"
+                        {{ old('type_id', $project?->type_id) == $type->id?'selected' : '' }}>
+                        {{$type->name}}</option>
+                        @endforeach
+
+                    </select>
+                </div>
                 <div class="mb-3">
                     <label for="version" class="form-label">Numero versione</label>
                     <input
@@ -66,11 +81,10 @@
                 </div>
                 <div class="form-floating mb-5">
                     <textarea class="form-control"
-                    placeholder="descrizione"
+                    placeholder="Descrizione *"
                     id="description"
                     name="description"
                     style="height: 200px">{{old('description',$project?->description)}}</textarea>
-                    <label for="description">Descrizione *</label>
                     @error('description')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -84,6 +98,12 @@
     </div>
 </div>
 
-
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#description' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 
 @endsection

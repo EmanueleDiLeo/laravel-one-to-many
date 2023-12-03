@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Type;
 use App\Functions\Helper;
 
+
 class TypeController extends Controller
 {
     /**
@@ -14,8 +15,13 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = Type::orderBy('id')->paginate(10);
+        $types = Type::orderBy('id','DESC')->paginate(10);
         return view('admin.types.index', compact('types'));
+    }
+
+    public function typeProject(){
+        $types = Type::all();
+        return view('admin.types.type-project', compact('types'));
     }
 
     /**

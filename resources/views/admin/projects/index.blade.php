@@ -18,6 +18,7 @@
             <th scope="col">ID</th>
             <th scope="col">Nome Progetto</th>
             <th scope="col">Ultimo aggiornamento</th>
+            <th scope="col">Tipo</th>
             <th scope="col">Azioni</th>
           </tr>
         </thead>
@@ -27,6 +28,7 @@
                     <td>{{ $project->id }}</td>
                     <td>{{ $project->name }}</td>
                     <td>{{ $project->date_updated }} </td>
+                    <td>{{ $project->type?->name ?? '-' }} </td>
                     <td>
                         <a href="{{route('admin.projects.show', $project)}}" class="btn btn-success "><i class="fa-solid fa-eye"></i></a>
                         <a href="{{route('admin.projects.edit', $project)}}" class="btn btn-warning "><i class="fa-solid fa-pencil"></i></a>

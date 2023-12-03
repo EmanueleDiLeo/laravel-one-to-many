@@ -7,6 +7,7 @@ use App\Http\Requests\ProjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Functions\Helper;
+use App\Models\Type;
 
 class ProjectController extends Controller
 {
@@ -28,7 +29,8 @@ class ProjectController extends Controller
         $method = 'POST';
         $route = route('admin.projects.store');
         $project = null;
-        return view('admin.projects.create-edit', compact('title','method', 'route', 'project'));
+        $types = Type::all();
+        return view('admin.projects.create-edit', compact('title','method', 'route', 'project','types'));
     }
 
     /**
@@ -60,7 +62,8 @@ class ProjectController extends Controller
         $title = 'Modifica progetto';
         $method = 'PUT';
         $route = route('admin.projects.update', $project);
-        return view('admin.projects.create-edit', compact('title','method', 'route', 'project'));
+        $types = Type::all();
+        return view('admin.projects.create-edit', compact('title','method', 'route', 'project', 'types'));
     }
 
     /**

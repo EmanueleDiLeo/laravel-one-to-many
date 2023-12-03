@@ -66,11 +66,10 @@
                 </div>
                 <div class="form-floating mb-5">
                     <textarea class="form-control"
-                    placeholder="descrizione"
+                    placeholder="Descrizione *"
                     id="description"
                     name="description"
                     style="height: 200px">{{old('description',$technology?->description)}}</textarea>
-                    <label for="description">Descrizione *</label>
                     @error('description')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -84,6 +83,13 @@
     </div>
 </div>
 
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#description' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 
 
 @endsection

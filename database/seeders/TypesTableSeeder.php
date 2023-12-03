@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Functions\Helper;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Type;
@@ -14,10 +15,10 @@ class TypesTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for($i=0; $i<30; $i++){
+        for($i=0; $i<9; $i++){
             $new_type = new Type();
             $new_type->name = $faker->name();
-            $new_type->slug = Type::generateSlug($new_type->name);
+            $new_type->slug = Helper::generateSlug($new_type->name, Type::class);
 
             $new_type->save();
         }
